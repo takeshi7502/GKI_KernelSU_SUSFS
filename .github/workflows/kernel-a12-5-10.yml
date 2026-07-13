@@ -36,6 +36,14 @@ on:
         required: false
         type: string
         default: "Sun Dec 01 08:10:00 UTC 2024"
+      artifact_upload_mode:
+        description: "Artifact upload mode"
+        required: false
+        type: choice
+        options:
+          - anykernel
+          - all
+        default: anykernel
       use_kpm:
         description: "KPM 功能（patched 尚不支持）"
         required: true
@@ -90,6 +98,10 @@ on:
         required: false
         type: string
         default: "Sun Dec 01 08:10:00 UTC 2024"
+      artifact_upload_mode:
+        required: false
+        type: string
+        default: all
       use_zram:
         required: true
         type: boolean
@@ -201,6 +213,7 @@ jobs:
       ksu_branch: ${{ inputs.kernelsu_branch }}
       version: ${{ inputs.version || '' }}
       build_time: ${{ inputs.build_time || '' }}
+      artifact_upload_mode: ${{ inputs.artifact_upload_mode || 'all' }}
       use_zram: ${{ inputs.use_zram }}
       use_bbg: ${{ inputs.use_bbg }}
       use_kpm: ${{ inputs.use_kpm }}
