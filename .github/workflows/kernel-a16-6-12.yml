@@ -36,6 +36,14 @@ on:
         required: false
         type: string
         default: "Sun Dec 01 08:10:00 UTC 2024"
+      artifact_upload_mode:
+        description: "Artifact upload mode"
+        required: false
+        type: choice
+        options:
+          - anykernel
+          - all
+        default: anykernel
       use_kpm:
         description: "KPM 功能（patched 尚不支持）"
         required: true
@@ -93,6 +101,10 @@ on:
         required: false
         type: string
         default: "Sun Dec 01 08:10:00 UTC 2024"
+      artifact_upload_mode:
+        required: false
+        type: string
+        default: all
       use_zram:
         required: true
         type: boolean
