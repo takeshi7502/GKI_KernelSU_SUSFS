@@ -164,8 +164,14 @@ jobs:
 
       - name: 安装编译依赖
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ccache python3 git curl build-essential libssl-dev bison flex libelf-dev dwarves
+          # Nhiều self-hosted runner dùng chung VPS nên phải tuần tự hóa APT.
+          # Chỉ bước cài package chờ nhau; quá trình build vẫn chạy song song.
+          sudo flock -w 600 /var/lock/github-actions-apt.lock bash -c '
+            set -e
+            apt-get -o DPkg::Lock::Timeout=600 update
+            DEBIAN_FRONTEND=noninteractive apt-get -o DPkg::Lock::Timeout=600 install -y \
+              ccache python3 git curl build-essential libssl-dev bison flex libelf-dev dwarves
+          '
 
       - name: 配置 ccache
         run: |
