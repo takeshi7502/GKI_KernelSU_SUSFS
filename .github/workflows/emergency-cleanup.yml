@@ -22,7 +22,7 @@ on:
 
 jobs:
   cleanup:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     # 仅允许仓库所有者执行
     if: github.actor == github.repository_owner
 

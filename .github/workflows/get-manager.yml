@@ -20,7 +20,7 @@ on:
 
 jobs:
   get_ksu_manager:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     outputs:
       # 输出1: KSU版本号
       ksuVer: ${{ steps.get_version.outputs.kversion }}

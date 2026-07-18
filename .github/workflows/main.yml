@@ -233,7 +233,7 @@ jobs:
   # 汇总所有构建任务中的 .rej 文件，方便调试补丁问题
   collect-rejects:
     if: ${{ !cancelled() }}
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs:
       - build-a12-5-10
       - build-a13-5-15
@@ -273,7 +273,7 @@ jobs:
   # 仅限原仓库运行，fork 仓库跳过此步骤
   release:
     if: ${{ always() && !cancelled() && inputs.release_type != 'Actions' }}
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     permissions:
       contents: write
       actions: write

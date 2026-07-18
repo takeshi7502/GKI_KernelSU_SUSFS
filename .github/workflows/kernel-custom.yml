@@ -127,7 +127,7 @@ on:
 
 jobs:
   resolve-version:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     outputs:
       android_version: ${{ steps.resolve.outputs.android_version }}
       sub_level: ${{ steps.resolve.outputs.sub_level }}
