@@ -70,3 +70,10 @@ wild_kernel_comparison.md
 action_build_comparison.md
 
 /.vs
+
+# Local validation and Python/tool caches (not deployed source).
+/tests/
+.ruff_cache/
+.pytest_cache/
+.venv/
+venv/
